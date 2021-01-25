@@ -32,6 +32,21 @@
         flex-direction: row;
       }
 
+      .bg-image {
+        /* The image used */
+        z-index: -1;
+        position: absolute;
+        background-image: url("./background-image.jpg");
+
+        /* Add the blur effect */
+        filter: blur(3px);
+        -webkit-filter: blur(3px);
+
+        /* Full height */
+        width: 100%;
+        height: 100%;
+      }
+
       /* start left-sidebar */
       #left-sidebar {
         background-color: rgba(36, 34, 47, 0.9);
@@ -45,9 +60,10 @@
 
       #left-sidebar-logo {
         display: flex;
-        height: 80px;
+        height: 40px;
         padding: 16px;
         align-items: center;
+        animation: 1s ease-out 0s 1 slideFromLeft;
       }
 
       #left-sidebar-logo a {
@@ -56,6 +72,10 @@
         color: #ffffff;
         font-size: 28px;
         font-weight: bold;
+      }
+
+      #left-sidebar-content {
+        animation: 1s ease-out 0s 1 slideFromLeft;
       }
 
       #left-sidebar-content a {
@@ -179,7 +199,7 @@
 
       #content-header {
         display: flex;
-        height: 80px;
+        height: 40px;
         padding: 16px;
         align-items: center;
         justify-content: center;
@@ -223,7 +243,9 @@
         flex: 1;
         flex-direction: column;
         padding: 16px;
-        overflow: scroll;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+        animation: 1s ease-out 0s 1 slideFromBottom;
       }
 
       #content-container h1 {
@@ -237,8 +259,18 @@
         height: 180px;
         border-radius: 12px;
         background-color: rgb(143, 139, 159, 0.1);
+        border: 1px solid rgb(143, 139, 159, 0.1);
         padding: 16px;
         margin: 8px 0px;
+      }
+
+      #content-container .card-container:hover {
+        /* background-color: rgba(102, 102, 102, 0.8); */
+        border: 1px solid rgba(102, 102, 102, 0.8);
+        /* scale: 1.02; */
+        -webkit-transition: border 200ms linear;
+        -ms-transition: border 200ms linear;
+        transition: border 200ms linear;
       }
 
       #content-container .card-container #card-left-content {
@@ -300,14 +332,14 @@
         align-items: flex-end;
       }
 
-      .poster-profile > .poster-profile-wrapper {
+      .poster-profile-wrapper {
         width: 50px;
         height: 50px;
         border-radius: 50%;
         position: relative;
       }
 
-      .poster-profile > .poster-profile-wrapper > img {
+      .poster-profile-wrapper > img {
         width: 50px;
         height: 50px;
         object-fit: cover;
@@ -315,7 +347,7 @@
         border: 1px solid #ffffff;
       }
 
-      .poster-profile > .poster-profile-wrapper > i {
+      .poster-profile-wrapper > i {
         position: absolute;
         bottom: 0;
         right: 0;
@@ -373,24 +405,263 @@
       #right-sidebar-content {
         display: flex;
         width: 300px;
-        /* flex: 1; */
-        background-color: #ccc;
+        flex-direction: column;
+        background-color: rgba(36, 34, 47, 0.9);
+
         padding: 16px;
+        padding-right: 48px;
+        justify-content: space-around;
       }
 
       #right-sidebar-content .right-sidebar-header {
         display: flex;
-        flex: 1;
-        height: 80px;
+        height: 40px;
         padding: 16px;
-        background-color: rgb(143, 139, 159, 1);
+        /* background-color: green; */
+        justify-content: flex-end;
+        align-items: center;
+      }
+
+      .right-sidebar-header .user-profile {
+        display: flex;
+        flex-direction: row;
+        /* margin-right: 8px; */
+        padding: 8px;
+        border-radius: 12px;
+        align-items: center;
+      }
+
+      .right-sidebar-header .user-profile:hover {
+        background-color: rgba(102, 102, 102, 0.8);
+        scale: 1.03;
+        -webkit-transition: background-color 200ms linear, scale 100ms linear;
+        -ms-transition: background-color 200ms linear, scale 100ms linear;
+        transition: background-color 200ms linear, scale 200ms linear;
+      }
+
+      .right-sidebar-header .user-profile img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 16px;
+      }
+
+      .right-sidebar-header .user-profile p {
+        font-size: 12px;
+        font-weight: bold;
+        color: #ffffff;
+      }
+
+      .right-sidebar-header .notification-button {
+        display: flex;
+        padding: 12px;
+
+        /* background-color: blue; */
+      }
+
+      .notification-button > i {
+        color: rgb(143, 139, 159, 1);
+      }
+
+      .right-sidebar-content-container {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        border-radius: 12px;
+        padding: 16px 0px;
+        animation: 1s ease-out 0s 1 slideFromRight;
+      }
+
+      .right-sidebar-content-container .popular-skater {
+        display: flex;
+        flex-direction: column;
+        border-radius: 12px;
+        background-color: rgba(143, 139, 159, 0.1);
+        margin: 8px 0px;
+        padding: 8px;
+      }
+
+      .right-sidebar-content-container .popular-skater:hover {
+        background-color: rgba(143, 139, 159, 0.2);
+        scale: 1.03;
+        -webkit-transition: background-color 200ms linear, scale 100ms linear;
+        -ms-transition: background-color 200ms linear, scale 100ms linear;
+        transition: background-color 200ms linear, scale 200ms linear;
+      }
+
+      .popular-skater h3 {
+        padding: 8px;
+        margin: unset;
+        color: #ffffff;
+        text-transform: capitalize;
+      }
+
+      .popular-skater > .popular-skater-content {
+        /* background-color: blue; */
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        flex: 1;
+      }
+
+      .popular-skater-profile {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 8px;
+      }
+
+      .popular-skater-profile > p {
+        font-size: 12px;
+        color: rgba(143, 139, 159, 1);
+        margin-bottom: unset;
+      }
+
+      .right-sidebar-content-container .popular-search {
+        display: flex;
+        flex-direction: column;
+        border-radius: 12px;
+        background-color: rgba(143, 139, 159, 0.1);
+        margin: 8px 0px;
+        padding: 8px;
+      }
+
+      .right-sidebar-content-container .popular-search::before {
+        margin-top: 100px;
+        transition-property: margin-top;
+        transition-duration: 4s;
+        transition-delay: 2s;
+      }
+
+      .right-sidebar-content-container .popular-search:hover {
+        background-color: rgba(143, 139, 159, 0.2);
+        scale: 1.03;
+        -webkit-transition: background-color 200ms linear, scale 100ms linear;
+        -ms-transition: background-color 200ms linear, scale 100ms linear;
+        transition: background-color 200ms linear, scale 200ms linear;
+      }
+
+      .popular-search h3 {
+        padding: 8px;
+        margin: unset;
+        color: #ffffff;
+        text-transform: capitalize;
+      }
+
+      .popular-search > .popular-search-content {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+      }
+
+      .popular-search-content > .popular-search-item {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+      }
+
+      .popular-search-item > .popular-search-item-info {
+        display: flex;
+        flex-direction: row;
+        flex: 1;
+        justify-content: space-between;
+        padding: 8px;
+      }
+
+      .popular-search-item-info > p {
+        font-size: 12px;
+        color: #ffffff;
+        margin: unset;
+        text-transform: capitalize;
+      }
+
+      .horizontal-bar-chart-wrapper {
+        height: 10px;
+        margin: 8px;
+        background-color: rgba(42, 44, 57, 0.5);
+        border-radius: 16px;
+      }
+
+      .horizontal-bar-chart-wrapper .horizontal-bar-chart-item {
+        width: 50%;
+        height: 100%;
+        border-radius: 16px;
+        background-color: rgba(104, 95, 202, 1);
+      }
+
+      #horizontal-bar-chart-item-1 {
+        width: 30%;
+      }
+
+      #horizontal-bar-chart-item-2 {
+        width: 75%;
+      }
+
+      #horizontal-bar-chart-item-3 {
+        width: 10%;
+      }
+
+      #horizontal-bar-chart-item-4 {
+        width: 40%;
       }
 
       /* end right-sidebar */
+
+      /* global style */
+      .button {
+        margin: 8px;
+        text-decoration: none;
+        color: rgb(168, 168, 168);
+        padding: 12px;
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        text-transform: capitalize;
+        border-radius: 12px;
+        border: 1px solid rgb(104, 104, 104);
+      }
+
+      @keyframes slideFromRight {
+        0% {
+          opacity: 0;
+          transform: translateX(100%);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideFromLeft {
+        0% {
+          opacity: 0;
+          transform: translateX(-100%);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideFromBottom {
+        0% {
+          opacity: 0;
+          transform: translateY(100%);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* end global style */
     </style>
   </head>
   <body>
     <div class="container">
+      <div class="bg-image"></div>
       <!-- left sidebar -->
       <div id="left-sidebar">
         <div id="left-sidebar-logo">
@@ -524,12 +795,372 @@
               </div>
             </div>
           </div>
+
+          <div class="card-container">
+            <div id="card-left-content">
+              <img
+                src="https://cdn.pixabay.com/photo/2016/03/24/13/45/coffee-1276778_1280.jpg"
+                alt=""
+              />
+            </div>
+
+            <div id="card-middle-content">
+              <p class="post-title">
+                How To Do Basic Jumping And How To Landing Safely
+              </p>
+
+              <div class="post-view-count">
+                <span>
+                  <i class="fas fa-eye"></i>
+                  125,955 views
+                </span>
+                <span>
+                  <i class="far fa-kiss-wink-heart"></i>
+                  125,955 views
+                </span>
+              </div>
+
+              <div class="poster-profile">
+                <div class="poster-profile-wrapper">
+                  <img
+                    src="https://cdn.pixabay.com/photo/2016/11/21/14/53/adult-1845814_1280.jpg"
+                    alt=""
+                  />
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="poster-account-info">
+                  <p class="poster-name">Thomas Hope</p>
+                  <p class="poster-duration">4 days ago</p>
+                </div>
+              </div>
+            </div>
+
+            <div id="card-right-content">
+              <div class="icon-wrapper">
+                <i class="far fa-heart"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-container">
+            <div id="card-left-content">
+              <img
+                src="https://cdn.pixabay.com/photo/2016/03/24/13/45/coffee-1276778_1280.jpg"
+                alt=""
+              />
+            </div>
+
+            <div id="card-middle-content">
+              <p class="post-title">
+                How To Do Basic Jumping And How To Landing Safely
+              </p>
+
+              <div class="post-view-count">
+                <span>
+                  <i class="fas fa-eye"></i>
+                  125,955 views
+                </span>
+                <span>
+                  <i class="far fa-kiss-wink-heart"></i>
+                  125,955 views
+                </span>
+              </div>
+
+              <div class="poster-profile">
+                <div class="poster-profile-wrapper">
+                  <img
+                    src="https://cdn.pixabay.com/photo/2016/11/21/14/53/adult-1845814_1280.jpg"
+                    alt=""
+                  />
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="poster-account-info">
+                  <p class="poster-name">Thomas Hope</p>
+                  <p class="poster-duration">4 days ago</p>
+                </div>
+              </div>
+            </div>
+
+            <div id="card-right-content">
+              <div class="icon-wrapper">
+                <i class="far fa-heart"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-container">
+            <div id="card-left-content">
+              <img
+                src="https://cdn.pixabay.com/photo/2016/03/24/13/45/coffee-1276778_1280.jpg"
+                alt=""
+              />
+            </div>
+
+            <div id="card-middle-content">
+              <p class="post-title">
+                How To Do Basic Jumping And How To Landing Safely
+              </p>
+
+              <div class="post-view-count">
+                <span>
+                  <i class="fas fa-eye"></i>
+                  125,955 views
+                </span>
+                <span>
+                  <i class="far fa-kiss-wink-heart"></i>
+                  125,955 views
+                </span>
+              </div>
+
+              <div class="poster-profile">
+                <div class="poster-profile-wrapper">
+                  <img
+                    src="https://cdn.pixabay.com/photo/2016/11/21/14/53/adult-1845814_1280.jpg"
+                    alt=""
+                  />
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="poster-account-info">
+                  <p class="poster-name">Thomas Hope</p>
+                  <p class="poster-duration">4 days ago</p>
+                </div>
+              </div>
+            </div>
+
+            <div id="card-right-content">
+              <div class="icon-wrapper">
+                <i class="far fa-heart"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-container">
+            <div id="card-left-content">
+              <img
+                src="https://cdn.pixabay.com/photo/2016/03/24/13/45/coffee-1276778_1280.jpg"
+                alt=""
+              />
+            </div>
+
+            <div id="card-middle-content">
+              <p class="post-title">
+                How To Do Basic Jumping And How To Landing Safely
+              </p>
+
+              <div class="post-view-count">
+                <span>
+                  <i class="fas fa-eye"></i>
+                  125,955 views
+                </span>
+                <span>
+                  <i class="far fa-kiss-wink-heart"></i>
+                  125,955 views
+                </span>
+              </div>
+
+              <div class="poster-profile">
+                <div class="poster-profile-wrapper">
+                  <img
+                    src="https://cdn.pixabay.com/photo/2016/11/21/14/53/adult-1845814_1280.jpg"
+                    alt=""
+                  />
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="poster-account-info">
+                  <p class="poster-name">Thomas Hope</p>
+                  <p class="poster-duration">4 days ago</p>
+                </div>
+              </div>
+            </div>
+
+            <div id="card-right-content">
+              <div class="icon-wrapper">
+                <i class="far fa-heart"></i>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- right sidebar -->
       <div id="right-sidebar-content">
-        <div class="right-sidebar-header"></div>
+        <div class="right-sidebar-header">
+          <div class="user-profile">
+            <img
+              src="https://cdn.pixabay.com/photo/2016/11/21/14/53/adult-1845814_1280.jpg"
+              alt="user-profile"
+            />
+            <p>Thomas</p>
+          </div>
+
+          <div class="notification-button">
+            <i class="fas fa-bell"></i>
+          </div>
+        </div>
+
+        <div class="right-sidebar-content-container">
+          <div style="height: 88px; display: flex"></div>
+          <div class="popular-skater">
+            <h3>Popular Skater</h3>
+            <div class="popular-skater-content">
+              <div class="popular-skater-profile">
+                <div class="poster-profile-wrapper">
+                  <img
+                    src="https://cdn.pixabay.com/photo/2016/11/21/14/53/adult-1845814_1280.jpg"
+                    alt=""
+                  />
+                  <i class="fas fa-check-circle"></i>
+                </div>
+
+                <p>Andy</p>
+              </div>
+
+              <div class="popular-skater-profile">
+                <div class="poster-profile-wrapper">
+                  <img
+                    src="https://cdn.pixabay.com/photo/2016/11/21/14/53/adult-1845814_1280.jpg"
+                    alt=""
+                  />
+                  <i class="fas fa-check-circle"></i>
+                </div>
+
+                <p>Andy</p>
+              </div>
+
+              <div class="popular-skater-profile">
+                <div class="poster-profile-wrapper">
+                  <img
+                    src="https://cdn.pixabay.com/photo/2016/11/21/14/53/adult-1845814_1280.jpg"
+                    alt=""
+                  />
+                  <i class="fas fa-check-circle"></i>
+                </div>
+
+                <p>Andy</p>
+              </div>
+
+              <div class="popular-skater-profile">
+                <div class="poster-profile-wrapper">
+                  <img
+                    src="https://cdn.pixabay.com/photo/2016/11/21/14/53/adult-1845814_1280.jpg"
+                    alt=""
+                  />
+                  <i class="fas fa-check-circle"></i>
+                </div>
+
+                <p>Andy</p>
+              </div>
+
+              <div class="popular-skater-profile">
+                <div class="poster-profile-wrapper">
+                  <img
+                    src="https://cdn.pixabay.com/photo/2016/11/21/14/53/adult-1845814_1280.jpg"
+                    alt=""
+                  />
+                  <i class="fas fa-check-circle"></i>
+                </div>
+
+                <p>Andy</p>
+              </div>
+
+              <div class="popular-skater-profile">
+                <div class="poster-profile-wrapper">
+                  <img
+                    src="https://cdn.pixabay.com/photo/2016/11/21/14/53/adult-1845814_1280.jpg"
+                    alt=""
+                  />
+                  <i class="fas fa-check-circle"></i>
+                </div>
+
+                <p>Andy</p>
+              </div>
+
+              <div class="popular-skater-profile">
+                <div class="poster-profile-wrapper">
+                  <img
+                    src="https://cdn.pixabay.com/photo/2016/11/21/14/53/adult-1845814_1280.jpg"
+                    alt=""
+                  />
+                  <i class="fas fa-check-circle"></i>
+                </div>
+
+                <p>Andy</p>
+              </div>
+
+              <div class="popular-skater-profile">
+                <div class="poster-profile-wrapper">
+                  <img
+                    src="https://cdn.pixabay.com/photo/2016/11/21/14/53/adult-1845814_1280.jpg"
+                    alt=""
+                  />
+                  <i class="fas fa-check-circle"></i>
+                </div>
+
+                <p>Andy</p>
+              </div>
+            </div>
+          </div>
+          <div class="popular-search">
+            <h3>Popular Search</h3>
+
+            <div class="popular-search-content">
+              <div class="popular-search-item">
+                <div class="popular-search-item-info">
+                  <p>Skateboard Trick</p>
+                  <p>21,998,224</p>
+                </div>
+                <div class="horizontal-bar-chart-wrapper">
+                  <div
+                    class="horizontal-bar-chart-item"
+                    id="horizontal-bar-chart-item-1"
+                  ></div>
+                </div>
+              </div>
+
+              <div class="popular-search-item">
+                <div class="popular-search-item-info">
+                  <p>Tutorial Skateboard flip and jump</p>
+                  <p>21,998,224</p>
+                </div>
+                <div class="horizontal-bar-chart-wrapper">
+                  <div
+                    class="horizontal-bar-chart-item"
+                    id="horizontal-bar-chart-item-2"
+                  ></div>
+                </div>
+              </div>
+
+              <div class="popular-search-item">
+                <div class="popular-search-item-info">
+                  <p>First Time Learn using skateboard</p>
+                  <p>21,998,224</p>
+                </div>
+                <div class="horizontal-bar-chart-wrapper">
+                  <div
+                    class="horizontal-bar-chart-item"
+                    id="horizontal-bar-chart-item-3"
+                  ></div>
+                </div>
+              </div>
+
+              <div class="popular-search-item">
+                <div class="popular-search-item-info">
+                  <p>Safety equipment</p>
+                  <p>21,998,224</p>
+                </div>
+                <div class="horizontal-bar-chart-wrapper">
+                  <div
+                    class="horizontal-bar-chart-item"
+                    id="horizontal-bar-chart-item-4"
+                  ></div>
+                </div>
+              </div>
+              <div class="popular-search-item">
+                <a href="#" class="button">See all popular search</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>
