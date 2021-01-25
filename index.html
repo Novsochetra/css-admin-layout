@@ -20,10 +20,16 @@
         font-family: "Open Sans";
       }
 
+      input:focus {
+        outline: none;
+      }
+
       .container {
         width: 100%;
-        height: 100%;
-        position: fixed;
+        height: 100vh;
+        display: flex;
+        flex: 1;
+        flex-direction: row;
       }
 
       /* start left-sidebar */
@@ -69,8 +75,8 @@
         transition: background-color 700ms linear;
       }
 
-      #left-sidebar-content a:hover:not(.menu-header) .fas,
-      #left-sidebar-content a:hover:not(.menu-header) .fab {
+      #left-sidebar-content > a:hover:not(.menu-header) > .fas,
+      #left-sidebar-content > a:hover:not(.menu-header) > .fab {
         background-color: rgba(103, 174, 127, 0.8);
         -webkit-transition: background-color 500ms linear;
         -ms-transition: background-color 500ms linear;
@@ -80,8 +86,8 @@
         color: #8f8ba2;
       }
 
-      .fas,
-      .fab {
+      #left-sidebar-content > a > .fas,
+      #left-sidebar-content > a > .fab {
         padding: 10px;
         background-color: rgb(70, 80, 83);
         border-radius: 8px;
@@ -161,14 +167,226 @@
 
       /* end toggle switch style */
 
-      /* content */
+      /* start content */
 
       .content {
-        width: 100px;
-        height: 100px;
-        position: fixed;
-        background-color: blue;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        padding: 16px;
+        background-color: rgba(36, 34, 47, 0.9);
       }
+
+      #content-header {
+        display: flex;
+        height: 80px;
+        padding: 16px;
+        align-items: center;
+        justify-content: center;
+        /* background-color: #8f8ba2; */
+      }
+
+      #content-header input[id="search"] {
+        width: 100%;
+        border-radius: 12px;
+        border-top-right-radius: unset;
+        border-bottom-right-radius: unset;
+        border: none;
+        padding: 12px 0px 12px 16px;
+        font-size: 15px;
+        background-color: rgb(143, 139, 159, 1);
+        color: rgba(255, 255, 255, 1);
+        /* -webkit-filter: blur(10px);
+        -moz-filter: blur(10px);
+        filter: blur(10px); */
+      }
+
+      .input-container {
+        display: -ms-flexbox; /* IE10 */
+        display: flex;
+        flex: 1;
+      }
+
+      .input-container > i.fas#search-icon {
+        padding: 12px 16px;
+        color: rgba(255, 255, 255, 1);
+        border-top-left-radius: unset;
+        border-bottom-left-radius: unset;
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
+        background-color: rgb(143, 139, 159, 1);
+        margin: unset;
+      }
+
+      #content-container {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        padding: 16px;
+        overflow: scroll;
+      }
+
+      #content-container h1 {
+        color: #ffffff;
+      }
+
+      #content-container .card-container {
+        /* background-color: blue; */
+        display: flex;
+        flex-direction: row;
+        height: 180px;
+        border-radius: 12px;
+        background-color: rgb(143, 139, 159, 0.1);
+        padding: 16px;
+        margin: 8px 0px;
+      }
+
+      #content-container .card-container #card-left-content {
+        width: 300px;
+        height: 100%;
+        border-radius: 12px;
+      }
+
+      #content-container .card-container #card-left-content img {
+        width: 100%;
+        position: relative;
+        border-radius: 12px;
+      }
+
+      #content-container .card-container #card-middle-content {
+        /* width: 300px; */
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        border-radius: 12px;
+        padding: 0px 16px;
+        justify-content: space-between;
+      }
+
+      #content-container .card-container #card-middle-content .post-title {
+        font-size: 20px;
+        color: #ffffff;
+        margin: unset;
+        font-weight: bold;
+        text-transform: capitalize;
+      }
+
+      #content-container .card-container #card-middle-content .post-view-count {
+        margin: 16px 0px;
+        color: #ffffff;
+      }
+      #content-container
+        .card-container
+        #card-middle-content
+        .post-view-count
+        > span {
+        font-size: 12px;
+        margin-right: 16px;
+        color: rgb(143, 139, 159, 1);
+      }
+
+      #content-container
+        .card-container
+        #card-middle-content
+        .post-view-count
+        > span
+        > i {
+        font-size: 12px;
+      }
+
+      .poster-profile {
+        display: flex;
+        flex: 1;
+        align-items: flex-end;
+      }
+
+      .poster-profile > .poster-profile-wrapper {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        position: relative;
+      }
+
+      .poster-profile > .poster-profile-wrapper > img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 1px solid #ffffff;
+      }
+
+      .poster-profile > .poster-profile-wrapper > i {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        color: rgb(92, 162, 249);
+        background-color: #ffffff;
+        border-radius: 50%;
+      }
+
+      .poster-profile > .poster-account-info {
+        width: 100%;
+        height: 50px;
+        margin-left: 12px;
+        font-size: 12px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .poster-profile > .poster-account-info > p {
+        margin: 0;
+      }
+
+      .poster-account-info > .poster-name {
+        font-size: 12;
+        color: #ffffff;
+        font-weight: bold;
+      }
+      .poster-account-info > .poster-duration {
+        color: rgb(143, 139, 159, 1);
+      }
+
+      .card-container #card-right-content {
+        width: 150px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card-container #card-right-content > .icon-wrapper {
+        /* refactor this css */
+        padding: 8px;
+        background-color: rgba(206, 95, 96, 1);
+        border-radius: 50%;
+        width: 16px;
+        display: flex;
+        align-self: flex-end;
+      }
+
+      .card-container #card-right-content > .icon-wrapper > i {
+        color: #ffffff;
+      }
+
+      /* end content */
+
+      /* start right-sidebar */
+      #right-sidebar-content {
+        display: flex;
+        width: 300px;
+        /* flex: 1; */
+        background-color: #ccc;
+        padding: 16px;
+      }
+
+      #right-sidebar-content .right-sidebar-header {
+        display: flex;
+        flex: 1;
+        height: 80px;
+        padding: 16px;
+        background-color: rgb(143, 139, 159, 1);
+      }
+
+      /* end right-sidebar */
     </style>
   </head>
   <body>
@@ -184,7 +402,6 @@
           <a href="#"><i class="fas fa-chart-line"></i> Trending</a>
           <a href="#"><i class="fas fa-cloud-download-alt"></i> Streaming</a>
           <a href="#"><i class="fas fa-wallet"></i> Bookmark</a>
-
           <hr />
 
           <a class="menu-header" href="">Category</a>
@@ -206,10 +423,114 @@
       </div>
 
       <!-- content -->
-      <div class="content"></div>
+      <div class="content">
+        <div id="content-header">
+          <div class="input-container">
+            <input type="text" name="search" id="search" placeholder="Search" />
+            <i id="search-icon" class="fas fa-search"></i>
+          </div>
+        </div>
+
+        <div id="content-container">
+          <h1>Trending</h1>
+          <div class="card-container">
+            <div id="card-left-content">
+              <img
+                src="https://cdn.pixabay.com/photo/2016/03/24/13/45/coffee-1276778_1280.jpg"
+                alt=""
+              />
+            </div>
+
+            <div id="card-middle-content">
+              <p class="post-title">
+                How To Do Basic Jumping And How To Landing Safely
+              </p>
+
+              <div class="post-view-count">
+                <span>
+                  <i class="fas fa-eye"></i>
+                  125,955 views
+                </span>
+                <span>
+                  <i class="far fa-kiss-wink-heart"></i>
+                  125,955 views
+                </span>
+              </div>
+
+              <div class="poster-profile">
+                <div class="poster-profile-wrapper">
+                  <img
+                    src="https://cdn.pixabay.com/photo/2016/11/21/14/53/adult-1845814_1280.jpg"
+                    alt=""
+                  />
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="poster-account-info">
+                  <p class="poster-name">Thomas Hope</p>
+                  <p class="poster-duration">4 days ago</p>
+                </div>
+              </div>
+            </div>
+
+            <div id="card-right-content">
+              <div class="icon-wrapper">
+                <i class="far fa-heart"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-container">
+            <div id="card-left-content">
+              <img
+                src="https://cdn.pixabay.com/photo/2016/03/24/13/45/coffee-1276778_1280.jpg"
+                alt=""
+              />
+            </div>
+
+            <div id="card-middle-content">
+              <p class="post-title">
+                How To Do Basic Jumping And How To Landing Safely
+              </p>
+
+              <div class="post-view-count">
+                <span>
+                  <i class="fas fa-eye"></i>
+                  125,955 views
+                </span>
+                <span>
+                  <i class="far fa-kiss-wink-heart"></i>
+                  125,955 views
+                </span>
+              </div>
+
+              <div class="poster-profile">
+                <div class="poster-profile-wrapper">
+                  <img
+                    src="https://cdn.pixabay.com/photo/2016/11/21/14/53/adult-1845814_1280.jpg"
+                    alt=""
+                  />
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="poster-account-info">
+                  <p class="poster-name">Thomas Hope</p>
+                  <p class="poster-duration">4 days ago</p>
+                </div>
+              </div>
+            </div>
+
+            <div id="card-right-content">
+              <div class="icon-wrapper">
+                <i class="far fa-heart"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- right sidebar -->
-      <div></div>
+      <div id="right-sidebar-content">
+        <div class="right-sidebar-header"></div>
+      </div>
     </div>
   </body>
 </html>
