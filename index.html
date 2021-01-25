@@ -433,10 +433,11 @@
 
       .right-sidebar-header .user-profile:hover {
         background-color: rgba(102, 102, 102, 0.8);
-        scale: 1.03;
-        -webkit-transition: background-color 200ms linear, scale 100ms linear;
-        -ms-transition: background-color 200ms linear, scale 100ms linear;
-        transition: background-color 200ms linear, scale 200ms linear;
+        transform: scale(1.03);
+        -webkit-transition: background-color 200ms linear,
+          transform 100ms linear;
+        -ms-transition: background-color 200ms linear, transform 100ms linear;
+        transition: background-color 200ms linear, transform 200ms linear;
       }
 
       .right-sidebar-header .user-profile img {
@@ -484,10 +485,12 @@
 
       .right-sidebar-content-container .popular-skater:hover {
         background-color: rgba(143, 139, 159, 0.2);
-        scale: 1.03;
-        -webkit-transition: background-color 200ms linear, scale 100ms linear;
-        -ms-transition: background-color 200ms linear, scale 100ms linear;
-        transition: background-color 200ms linear, scale 200ms linear;
+        transform: scale(1.03);
+
+        -webkit-transition: background-color 200ms linear,
+          transform 200ms linear;
+        -ms-transition: background-color 200ms linear, transform 200ms linear;
+        transition: background-color 200ms linear, transform 200ms linear;
       }
 
       .popular-skater h3 {
@@ -528,19 +531,13 @@
         padding: 8px;
       }
 
-      .right-sidebar-content-container .popular-search::before {
-        margin-top: 100px;
-        transition-property: margin-top;
-        transition-duration: 4s;
-        transition-delay: 2s;
-      }
-
       .right-sidebar-content-container .popular-search:hover {
         background-color: rgba(143, 139, 159, 0.2);
-        scale: 1.03;
-        -webkit-transition: background-color 200ms linear, scale 100ms linear;
-        -ms-transition: background-color 200ms linear, scale 100ms linear;
-        transition: background-color 200ms linear, scale 200ms linear;
+        transform: scale(1.03);
+        -webkit-transition: background-color 200ms linear,
+          transform 100ms linear;
+        -ms-transition: background-color 200ms linear, transform 100ms linear;
+        transition: background-color 200ms linear, transform 200ms linear;
       }
 
       .popular-search h3 {
