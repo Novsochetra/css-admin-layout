@@ -256,42 +256,46 @@
         /* background-color: blue; */
         display: flex;
         flex-direction: row;
-        height: 180px;
+        flex-wrap: wrap;
         border-radius: 12px;
         background-color: rgb(143, 139, 159, 0.1);
         border: 1px solid rgb(143, 139, 159, 0.1);
-        padding: 16px;
+        /* padding: 16px; */
+        padding: 8px;
         margin: 8px 0px;
       }
 
       #content-container .card-container:hover {
         /* background-color: rgba(102, 102, 102, 0.8); */
         border: 1px solid rgba(102, 102, 102, 0.8);
-        /* scale: 1.02; */
         -webkit-transition: border 200ms linear;
         -ms-transition: border 200ms linear;
         transition: border 200ms linear;
       }
 
       #content-container .card-container #card-left-content {
-        width: 300px;
-        height: 100%;
+        display: flex;
+        flex: 1;
+        padding: 8px;
         border-radius: 12px;
       }
 
       #content-container .card-container #card-left-content img {
-        width: 100%;
+        width: 300px;
+        height: 180px;
         position: relative;
+        flex: 1;
+        object-fit: cover;
         border-radius: 12px;
       }
 
       #content-container .card-container #card-middle-content {
-        /* width: 300px; */
         display: flex;
         flex: 1;
+        min-width: 250px;
         flex-direction: column;
         border-radius: 12px;
-        padding: 0px 16px;
+        padding: 8px;
         justify-content: space-between;
       }
 
@@ -328,13 +332,12 @@
 
       .poster-profile {
         display: flex;
-        flex: 1;
-        align-items: flex-end;
+        /* flex: 1; */
+        align-items: center;
       }
 
       .poster-profile-wrapper {
         width: 50px;
-        height: 50px;
         border-radius: 50%;
         position: relative;
       }
@@ -358,7 +361,7 @@
 
       .poster-profile > .poster-account-info {
         width: 100%;
-        height: 50px;
+        /* height: 50px; */
         margin-left: 12px;
         font-size: 12px;
         display: flex;
@@ -379,9 +382,8 @@
       }
 
       .card-container #card-right-content {
-        width: 150px;
-        height: 100%;
         display: flex;
+        padding: 8px;
         flex-direction: column;
       }
 
@@ -750,9 +752,11 @@
             </div>
 
             <div id="card-middle-content">
-              <p class="post-title">
-                How To Do Basic Jumping And How To Landing Safely
-              </p>
+              <div>
+                <p class="post-title">
+                  How To Do Basic Jumping And How To Landing Safely
+                </p>
+              </div>
 
               <div class="post-view-count">
                 <span>
