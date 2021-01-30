@@ -283,15 +283,22 @@
         flex: 1;
         padding: 8px;
         border-radius: 12px;
+        max-width: 300px;
       }
 
       #content-container .card-container #card-left-content img {
-        width: 300px;
+        max-width: 300px;
         height: 180px;
         position: relative;
         flex: 1;
         object-fit: cover;
         border-radius: 12px;
+      }
+      #content-container .card-container #card-left-content img:hover {
+        transform: scale(1.03);
+        -webkit-transition: transform 100ms linear;
+        -ms-transition: transform 100ms linear;
+        transition: transform 200ms linear;
       }
 
       #content-container .card-container #card-middle-content {
