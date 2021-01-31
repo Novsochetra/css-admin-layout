@@ -92,7 +92,12 @@
         background-color: rgba(102, 102, 102, 0.8);
         -webkit-transition: background-color 700ms linear;
         -ms-transition: background-color 700ms linear;
-        transition: background-color 700ms linear;
+        /* transition: background-color 700ms linear; */
+        transform: scale(1.05);
+        border: medium none;
+        box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 0.5px inset,
+          rgba(23, 0, 102, 0.2) 0px 20px 40px, rgba(0, 0, 0, 0.1) 0px 1px 3px;
+        transition: all 0.8s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
       }
 
       #left-sidebar-content > a:hover:not(.menu-header) > .fas,
@@ -293,9 +298,18 @@
         flex: 1;
         object-fit: cover;
         border-radius: 12px;
+        transition: all 0.8s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
       }
       #content-container .card-container #card-left-content img:hover {
-        transform: scale(1.03);
+        border-radius: 8px;
+        transform: scale(1.05);
+        -webkit-transition: transform 100ms linear;
+        -ms-transition: transform 100ms linear;
+        transition: transform 200ms linear;
+      }
+
+      #content-container .card-container #card-left-content img::after {
+        transform: scale(1.05);
         -webkit-transition: transform 100ms linear;
         -ms-transition: transform 100ms linear;
         transition: transform 200ms linear;
